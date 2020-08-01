@@ -7,3 +7,6 @@ Descrição da imagem: https://github.com/rafhaelom/C/blob/master/linguagem_c.tx
 
 ## Agenda Telefônica com Vetores sem o uso de Struct
 https://github.com/rafhaelom/C/blob/master/agenda_telefonica_final.c
+
+## Calculadora Operacional
+https://github.com/rafhaelom/C/blob/master/calculadoraop.c
