@@ -1,7 +1,7 @@
 /*BUSCA LINEAR
 
 DISCIPLINA: ANÁLISE DE ALGORITMOS.
-GRUPO: Gabriel de Jesus, Nathan Santana, Rafhael Martins e Victor Augusto.
+GRUPO: Gabriel de Jesus, Nathan Santana, Rafhael Martins e Victor Resende.
 PROFESSOR: Rodrigo Hagstrom.
 
 EXERCÍCO AULA 01: Programar qualquer versão da busca linear, em qualquer linguagem, preferencialmente C ou Python, 
@@ -78,7 +78,7 @@ int busca_linear(int v[], int num)
             //printf("\n\nElemento encontrado!!!");
             break;
         }
-        msleep(100);
+        msleep(200);
     }
 
     // Verifica se encontrou o elemento e qual o índice.
