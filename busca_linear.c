@@ -1,3 +1,13 @@
+/*BUSCA LINEAR
+
+DISCIPLINA: ANÁLISE DE ALGORITMOS.
+GRUPO: Gabriel de Jesus, Nathan Santana, Rafhael Martins e Victor Augusto.
+PROFESSOR: Rodrigo Hagstrom.
+
+EXERCÍCO AULA 01: Programar qualquer versão da busca linear, em qualquer linguagem, preferencialmente C ou Python, 
+onde seja possível perceber o número de iterações de cada trecho do código ou algoritmo, ou, que seja possível perceber 
+o tempo de execução do código.*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -5,35 +15,78 @@
 
 #define MAX 100
 
-int busca_linear(int v[], int elemento);
+// Função de contador de tempo em ms para a iteracao no terminal ficar mais interessante.
+int msleep(unsigned int tms) { 
+  return usleep(tms * 1000);
+} 
+
+// Inicializa a função de procurar.
+int procurar(void);
+
+// Inicializa a função de busca_linear.
+int busca_linear(int v[], int num);
 
 int main()
 {
-    //Defini do vetor e o preenche aleatóriamente de 0 a 100.
-    int v[MAX];
+    //Defini do vetor e variáveis.
+    int vet[MAX], i, n;
 
-    srand(time(NULL));  //inicia a funcao e semente dos numeros randomicos.
+    /*A função srand(time(NULL)) inicializa o gerador de números aleatórios com um valor de 'semente',
+    com o parâmetro time(NULL) é então calculado um valor como sendo o total de segundos passados desde
+    1 de janeiro de 1970 até a data atual. Com isso, a cada execução o valor da 'semente' será diferente.*/
+    srand(time(NULL));
 
-    for (int i = 0; i < MAX; i++){
-        v[MAX] = (rand()%100);
-        printf("\nValor no vetor: %d", v[i]);
+    printf("Gerando números aleatórios!\n\n");
+    for (i = 0; i < MAX; i++){
+        //Preenche o vetor com números aleatóriamente de 0 a 100.
+        vet[i] = rand() % 100;
+        printf("%d\t--->  no índice  --->\t[%d]\n", vet[i], i);
     }
 
-    printf("%d \n", busca_linear(v, 32));
+    // Chama a função procurar.
+    n = procurar();
+
+    // Chama a função busca_linear.
+    busca_linear(vet, n);
+    
     return 0;
 }
 
-int busca_linear(int v[], int elemento)
+// Função para solicitar um elemento a ser procurado.
+int procurar(void)
 {
-    for (int i =0; i < MAX; i++){
-        printf("\nValor pesquisado: %d\n", i);
-        if (v[i] == elemento){
-            printf("Elemento encontrado!\n");
-            return i;
+    //Defini variáveis.
+    int elemento;
+
+    // Solicita ao usuário o elemento a ser buscado.
+    printf("\n\nQual elemento deseja procurar: ");
+    scanf("%d", &elemento);
+    //printf("\nValor a ser procurado é %d\n\n", elemento);
+    return elemento;
+}
+
+// Função para buscar um elemento no vetor.
+int busca_linear(int v[], int num)
+{
+    //Defini variáveis.
+    int i;
+
+    // Busca o elemento no vetor.
+    for (i = 0; i < MAX; i++){
+        printf("\nProcurando elemento %d no índice [%d]", num, i);
+        if(v[i] == num){
+            //printf("\n\nElemento encontrado!!!");
+            break;
         }
-        else{
-            printf("Elemento não encontrado!\n");
-        }
+        msleep(100);
     }
-    return -1;
+
+    // Verifica se encontrou o elemento e qual o índice.
+    if(i < MAX){
+        printf("\n\nElemento %d encontrado no índice [%d]\n", num, i);
+    }
+    else{
+        printf("\n\nTodos os índices percorridos!");
+        printf("\nElemento não encontrado!!!\n");
+    }
 }
